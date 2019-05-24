@@ -12,10 +12,15 @@ echo  "
 3.应用和通知
 4.通知日志
 
-快速冻结/卸载MIUI广告组件
-5.卸载MIUI广告组件
-6.冻结MIUI广告组件
+快速冻结/卸载MIUI广告及系统组件
+5.卸载MIUI组件
+6.冻结MIUI组件
+7.解冻MIUI组件
+8.显示即将去世的组件列表
+9.退出脚本
 
+"$list"
+	
 Please enter the number:"
 read  open
 case  $open in
@@ -45,11 +50,19 @@ i='com.android.settings/com.android.settings.Settings$NotificationStationActivit
 am start -n $i
 	;;
 5)
-pm uninstall com.miui.video com.xiaomi.gamecenter.sdk.service com.miui.player com.miui.analytics com.xiaomi.ab com.mipay.wallet com.miui.systemAdSolution ; sleep 2
+pm uninstall --user 0 com.miui.video ; pm uninstall --user 0 com.miui.player ;pm uninstall --user 0 com.mipay.wallet ; pm uninstall --user 0 com.xiaomi.payment ; pm uninstall --user 0 com.xiaomi.gamecenter.sdk.service ; pm uninstall --user 0 com.miui.analytics ; pm uninstall --user 0 com.xiaomi.ab ; pm uninstall --user 0 com.miui.systemAdSolution 
 	;;
 6)
-pm disable-user com.miui.video ; sleep 2
+pm disable-user com.miui.video ;pm disable-user com.miui.player ; pm disable-user com.miui.analytics ; pm disable-user com.xiaomi.ab ; pm disable-user com.xiaomi.payment ; pm diasble-user com.xiaomi.gamecenter.sdk.service ; pm disable-user com.xiaomi.payment ; pm disable-user com.mipay.wallet ; pm disable-user com.miui.systemAdSolution
 	;;
+7)
+pm enable com.miui.video ; pm enable com.miui.player ; pm enable com.xiaomi.payment ; pm enable com.xiaomi.gamecenter.sdk.service ; pm enable com.xiaomi.payment ; pm enable com.miui.analytics ; pm enable com.xiaomi.ab ; pm enable com.mipay.wallet ; pm enable com.miui.systemAdSolution
+        ;;
+8)
+list="小米视频 小米音乐 小米钱包 游戏服务组件 米币支付 analytics mab msa"
+;;
+9)
+	exit
 esac
 menu
 }
