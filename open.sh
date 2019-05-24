@@ -45,10 +45,10 @@ i='com.android.settings/com.android.settings.Settings$NotificationStationActivit
 am start -n $i
 	;;
 5)
-pm uninstall com.miui.video
+pm uninstall com.miui.video ; sleep 2
 	;;
 6)
-pm disable-user com.miui.video
+pm disable-user com.miui.video ; sleep 2
 	;;
 esac
 menu
