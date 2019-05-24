@@ -45,7 +45,7 @@ i='com.android.settings/com.android.settings.Settings$NotificationStationActivit
 am start -n $i
 	;;
 5)
-pm uninstall com.miui.video ; sleep 2
+pm uninstall com.miui.video com.xiaomi.gamecenter.sdk.service com.miui.player com.miui.analytics com.xiaomi.ab com.mipay.wallet com.miui.systemAdSolution ; sleep 2
 	;;
 6)
 pm disable-user com.miui.video ; sleep 2
