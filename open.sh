@@ -3,7 +3,7 @@
 #菜单
 menu (){
 clear
-echo -e "
+echo  "
 快速打开一些隐藏活动
 
 0.电池优化
