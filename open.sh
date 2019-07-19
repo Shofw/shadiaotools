@@ -194,4 +194,28 @@ pm install -r $input_package
 install_apk
 }
 
+
+Connect_type(){ 
+#环境类型
+clear
+echo "你想使用何种方式运行本脚本？"
+echo "1.root模式"
+echo "2.免root模式(adb)"
+echo "3.运行？段位？"
+echo ""
+read -p "召唤师，请选择您的英雄:" input_type
+case $input_type in
+1)
+su #提权
 menu #启动菜单
+;;
+2)
+#`pip install adb` #安装adb环境
+`adb shell sh ./open.sh` #以adb运行脚本
+;;
+3)
+kill -9 `pgrep -f bash`
+esac
+}
+
+Connect_type
