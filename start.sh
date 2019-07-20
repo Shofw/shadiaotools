@@ -57,7 +57,7 @@ echo
 }
 
 isroot() {
-if [ `busybox whoami` = "root" ];then
+if [ `whoami` = "root" ];then
 	bashisyes  #判断bash是否存在
 else
     echo "请执行 'su -c ./start.sh' 临时赋予脚本管理员权限 "
