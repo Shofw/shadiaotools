@@ -11,7 +11,7 @@ echo
 read -p "好的召唤师，请选择您的英雄:" input_type
 case $input_type in
 1)
-su -c bash open.sh
+bash open.sh
 ;;
 2)
 echo "请先前往magisk仓库搜索并安装模块 'adb'"
@@ -32,19 +32,34 @@ esac
 bashisyes(){
 
 clear
+
 echo
 echo "欢迎吖！ 版本号：1.2"
 echo
-echo "因本脚本使用bash作为命令解释器，请先前往magisk仓库搜索并安装模块 'GNU' "
-echo
-read -p "若已安装该模块，请按回车键重试."
-if [  -x /system/xbin/bash  ]; then
-Connect_type
+echo "Tip：本脚本使用bash作为命令解释器 默认状态下system只包含sh命令解释器 "
+echo "接下来将检测bash是否存在"
+read -p "请按回车键继续."
+if  command -v bash > /dev/null; then
+    echo "bash command has found"
+    sleep 1 && Connect_type
 else
-echo
-echo "警告：bash命令解释器不存在！ 请前往magisk仓库安装相关模块"
+    echo "Error:bash command has not found"
+    echo "警告：bash命令解释器不存在！"
 fi
+echo
 
 }
 
-bashisyes #判断bash是否存在
+isroot() {
+if [ `busybox whoami` = "root" ];then
+	bashisyes  #判断bash是否存在
+else
+    echo "请执行 'su -c ./start.sh' 临时赋予脚本管理员权限 "
+    echo
+    echo "权限仅用于测试系统环境中是否存在bash命令解释器"
+    echo 
+
+    exit
+fi
+}
+isroot #主入口
