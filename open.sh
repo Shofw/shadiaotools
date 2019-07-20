@@ -151,7 +151,7 @@ sh /sdcard/Android/data/com.catchingnow.icebox/files/start.sh
 echo "哈哈想不到吧！我特么没有写这个东西"
 echo 
 echo "因为冰箱的开发者已经自己写了一个Linux端的脚本，"
-;
+;;
 *)
 adbtools
 esac
