@@ -15,10 +15,11 @@ echo  "
 5.冻结MIUI组件
 
 6.adb激活快捷工具
+
 [类原生工具]
-7.快速安装APP
-8.去除x号
-9.跳过Google验证 (twrp下请先手动挂载system读写) 
+
+7.去除x号
+8.跳过Google验证 (twrp下请先手动挂载system读写) 
 
 按回车键退出脚本.
 "
@@ -75,13 +76,8 @@ sleep 1 &&  menu
 6)
 adbtools #adb快捷启动
 sleep 1 &&  menu
-        ;;
-7)
-cp apk/* /data/local/tmp/ 
-cd /data/local/tmp/ 
-install_apk #启动安装方法
 	;;
-8)
+7)
 #删除验证服务器
 settings delete global captive_portal_https_url
 settings delete global captive_portal_http_url
@@ -91,7 +87,7 @@ settings put global captive_portal_https_url https://captive.v2ex.co/generate_20
 
 sleep 1 &&  menu
 	;;
-9)
+8)
 #跳过Google验证
 mount -o rw,remount /system
 echo ro.setupwizard.mode=DISABLED >> /system/build.prop
@@ -152,8 +148,10 @@ case $what_type in
 sh /sdcard/Android/data/com.catchingnow.icebox/files/start.sh
 	;;
 2)
-
-	;;
+echo "哈哈想不到吧！我特么没有写这个东西"
+echo 
+echo "因为冰箱的开发者已经自己写了一个Linux端的脚本，"
+;
 *)
 adbtools
 esac
@@ -193,52 +191,4 @@ pm install -r $input_package
 
 install_apk
 }
-
-Connect_type(){ 
-#环境类型
-clear
-echo "你想使用何种方式运行本脚本？"
-echo "1.root模式"
-echo "2.免root模式(adb)"
-echo "3.运行？段位？"
-echo 
-read -p "好的召唤师，请选择您的英雄:" input_type
-case $input_type in
-1)
-su -c bash ./open.sh
-;;
-2)
-echo "请先前往magisk仓库搜索并安装模块 'adb'"
-echo
-read -p "如已安装模块 请按回车键尝试"
-mkdir /sdcard/.android #创建存放adb密钥的目录
-cd /sdcard/.android #进入存放adb密钥的目录
-adb keygen adbkey #生成adb密钥
-adb kill-server #结束adb进程
-cd $HOME/O* #返回工作目录
-adb shell sh ./open.sh 
-;;
-3)
-kill -9 `pgrep -f bash`
-esac
-}
-
-bashisyes(){
-
-clear
-echo 
-echo "欢迎吖！"
-echo
-echo "因本脚本使用bash作为命令解释器，请先前往magisk仓库搜索并安装模块 'GNU' "
-echo
-read -p "若已安装该模块，请按回车键重试."
-if [ -x /bin/bash  ]; then
-Connect_type
-else
-echo
-echo "警告：bash命令解释器不存在！ 请前往magisk仓库安装相关模块"
-fi
-
-}
-
-bashisyes #判断bash是否存在
+menu
