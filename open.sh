@@ -1,4 +1,4 @@
-#!$PREFIX/bin/bash 
+#!/bin/bash 
 #菜单
 menu (){
 clear
@@ -105,18 +105,23 @@ read -p "你想激活什么？(键入数字)： " adb_output
 case $adb_output in
 1)
 what_type
+sleep 1 && adbtools
        ;;
 2)
-sh /sdcard/Android/data/moe.shizuku.privileged.api/files/start.sh
+sh /sdcard/Android/data/moe.shizuku.privileged.api/files/start.sh 
+sleep 1 && adbtools
 	;;
 3)
 sh /data/data/me.piebridge.brevent/brevent.sh
+sleep 1 && adbtools
 	;;
 4)
 dpm set-device-owner me.yourbay.airfrozen/.main.core.mgmt.MDeviceAdminReceiver
+sleep 1 && adbtools
 	;;
 5)
 pm grant --user 0 rikka.appops android.permission.GET_APP_OPS_STATS
+sleep 1 && adbtools
 	;;
 *)
 menu
@@ -136,11 +141,13 @@ read -p "请选择激活方式:" what_type
 case $what_type in
 1)
 sh /sdcard/Android/data/com.catchingnow.icebox/files/start.sh
+sleep 2 && what_type
 	;;
 2)
 echo "哈哈想不到吧！我特么没有写这个东西"
 echo 
 echo "因为冰箱的开发者已经自己写了一个Linux端的脚本，"
+sleep 2 && what_type
 ;;
 *)
 adbtools
@@ -157,34 +164,45 @@ package6=com.xiaomi.gamecenter.sdk.service #小米游戏服务
 package7=com.mipay.wallet #小米钱包
 package8=com.miui.systemAdSolution #广告组件
 
-package_disable(){
+package_disable (){
 echo
 echo "1.小米视频 2.隐私搜集服务 3.小米音乐 4.米币支付"
 echo "5.小米推广 6.小米游戏服务 7.小米钱包 8.广告组件"
 echo
+echo "all.全部停用"
 echo "按回车键返回主菜单."
 echo
-read -p "你想卸载什么？(键入数字)：" output
+
+read -p "你想停用什么？(键入数字)：" output
 case $output in
 
-1) pm disable-user $package1
+1) pm disable-user $package1 package_disable
 	;;
-2) pm disable-user $package2
+2) pm disable-user $package2 package_disable
 	;;
-3) pm disable-user $package3
+3) pm disable-user $package3 package_disable
 	;;
-4) pm disable-user $package4
+4) pm disable-user $package4 package_disable
 	;;
-5) pm disable-user $package5
+5) pm disable-user $package5 package_disable
 	;;
-6) pm disable-user $package6
+6) pm disable-user $package6 package_disable
 	;;
-7) pm disable-user $package7
+7) pm disable-user $package7 package_disable
 	;;
-*)
-sleep 1 && menu
-esac
+all) 
+pm disable-user $package1
+pm disable-user $package2
+pm disable-user $package3
+pm disable-user $package4
+pm disable-user $package5 
+pm disable-user $package6
+pm disable-user $package7
+
 package_disable
+        ;;
+*) menu
+esac
 }
 menu
 
