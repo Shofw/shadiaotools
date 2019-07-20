@@ -51,26 +51,17 @@ am start -n $i
 sleep 1 &&  menu
 	;;
 4)
-pm uninstall --user 0 com.miui.video
-pm uninstall --user 0 com.miui.player
-pm uninstall --user 0 com.mipay.wallet
-pm uninstall --user 0 com.xiaomi.payment
-pm uninstall --user 0 com.xiaomi.gamecenter.sdk.service
-pm uninstall --user 0 com.miui.analytics
-pm uninstall --user 0 com.xiaomi.ab
-pm uninstall --user 0 com.miui.systemAdSolution
+pm uninstall --user 0 $package1
+pm uninstall --user 0 $package2
+pm uninstall --user 0 $package3
+pm uninstall --user 0 $package4
+pm uninstall --user 0 $package5
+pm uninstall --user 0 $package6
+pm uninstall --user 0 $package7
 sleep 1 &&  menu
 	;;
 5)
-pm disable-user com.miui.video
-pm disable-user com.miui.player
-pm disable-user com.miui.analytics
-pm disable-user com.xiaomi.ab
-pm disable-user com.xiaomi.payment
-pm diasble-user com.xiaomi.gamecenter.sdk.service
-pm disable-user com.xiaomi.payment
-pm disable-user com.mipay.wallet
-pm disable-user com.miui.systemAdSolution
+package_disable
 sleep 1 &&  menu
 	;;
 6)
@@ -158,38 +149,41 @@ esac
 
 }
 
-install_apk(){
-clear
-echo "
-1.安装钛备份
-2.安装网易云音乐
-3.安装酷安
-4.安装迅雷
+package1=com.miui.video #小米视频
+package2=com.miui.analytics #隐私搜集服务
+package3=com.miui.player #小米音乐
+package4=com.xiaomi.payment #米币支付
+package5=com.xiaomi.ab #小米推广
+package6=com.xiaomi.gamecenter.sdk.service #小米游戏服务
+package7=com.mipay.wallet #小米钱包
+package8=com.miui.systemAdSolution #广告组件
 
-回车键返回主菜单
-"
-read -p "你想安装什么？(键入数字)：" output
+package_disable(){
+echo "1.小米视频 2.隐私搜集服务 3.小米音乐 4.米币支付"
+echo "5.小米推广 6.小米游戏服务 7.小米钱包 8.广告组件"
+echo "回车键返回主菜单."
+echo
+read -p "你想卸载什么？(键入数字)：" output
 case $output in
 
-1)
-input_package="TitaniumBackup.apk"
+1) pm disable-user $package1
 	;;
-2)
-input_package="netease.apk"
+2) pm disable-user $package2
 	;;
-3)
-input_package="coolapk.apk"
+3) pm disable-user $package3
 	;;
-4)
-input_package="xunlei.apk"
+4) pm disable-user $package4
+	;;
+5) pm disable-user $package5
+	;;
+6) pm disable-user $package6
+	;;
+7) pm disable-user $package7
 	;;
 *)
-rm -rf /data/local/tmp/*
 sleep 1 && menu
 esac
-pm install -r $input_package
-
-install_apk
+package_disable
 }
 menu
 
