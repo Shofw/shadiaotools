@@ -205,7 +205,7 @@ echo
 read -p "好的召唤师，请选择您的英雄:" input_type
 case $input_type in
 1)
-su -c bash ./open.sh
+`su -c bash ./open.sh`
 ;;
 2)
 echo "请先前往magisk仓库搜索并安装模块 'adb'"
@@ -216,7 +216,7 @@ cd /sdcard/.android #进入存放adb密钥的目录
 adb keygen adbkey #生成adb密钥
 adb kill-server #结束adb进程
 cd $HOME/O* #返回工作目录
-adb shell sh ./open.sh 
+`adb shell sh ./open.sh `
 ;;
 3)
 kill -9 `pgrep -f bash`
