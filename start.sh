@@ -25,7 +25,7 @@ cd $HOME/O* #返回工作目录
 adb shell sh ./open.sh
 ;;
 3)
-kill -9 `pgrep -f bash`
+  kill -9 `pgrep -f bash`
 esac
 }
 
