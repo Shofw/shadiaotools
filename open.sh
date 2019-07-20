@@ -205,7 +205,7 @@ echo
 read -p "好的召唤师，请选择您的英雄:" input_type
 case $input_type in
 1)
-`su -c bash ./open.sh`
+`su && bash open.sh`
 ;;
 2)
 echo "请先前往magisk仓库搜索并安装模块 'adb'"
