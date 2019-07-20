@@ -17,7 +17,6 @@ echo  "
 6.adb激活快捷工具
 
 [类原生工具]
-
 7.去除x号
 8.跳过Google验证 (twrp下请先手动挂载system读写) 
 
@@ -159,9 +158,11 @@ package7=com.mipay.wallet #小米钱包
 package8=com.miui.systemAdSolution #广告组件
 
 package_disable(){
+echo
 echo "1.小米视频 2.隐私搜集服务 3.小米音乐 4.米币支付"
 echo "5.小米推广 6.小米游戏服务 7.小米钱包 8.广告组件"
-echo "回车键返回主菜单."
+echo
+echo "按回车键返回主菜单."
 echo
 read -p "你想卸载什么？(键入数字)：" output
 case $output in
