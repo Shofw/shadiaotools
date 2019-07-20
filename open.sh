@@ -1,4 +1,4 @@
-#!/bin/bash
+#!$PREFIX/bin/bash /system/xbin/bash
 #菜单
 menu (){
 clear
@@ -232,7 +232,7 @@ echo
 echo "因本脚本使用bash作为命令解释器，请先前往magisk仓库搜索并安装模块 'GNU' "
 echo
 read -p "若已安装该模块，请按回车键重试."
-if [ -x /bin/bash  ]; then
+if [ -x /system/xbin/bash  ]; then
 Connect_type
 else
 echo
