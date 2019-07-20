@@ -69,7 +69,7 @@ isroot() {
 if [ `whoami` = "root" ];then
 	bashisyes  #判断bash是否存在
 else
-    echo "请执行 'su -c ./start.sh' 临时赋予脚本管理员权限 "
+    echo "请执行 'su -c bash start.sh' 临时赋予脚本管理员权限 "
     echo
     echo "权限用于测试系统环境中是否存在bash命令解释器"
     echo 
