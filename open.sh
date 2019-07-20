@@ -1,4 +1,4 @@
-#!$PREFIX/bin/bash /system/xbin/bash
+#!$PREFIX/bin/bash 
 #菜单
 menu (){
 clear
