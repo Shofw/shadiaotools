@@ -45,6 +45,12 @@ if  command -v bash > /dev/null; then
 else
     echo "Error:bash command has not found"
     echo "警告：bash命令解释器不存在！"
+    echo 
+    echo "提示：脚本会把Tremux自带的bash软链接到/system/bin"
+    read "如果继续，请按回车键. 否则请结束该脚本"
+    mount -o rw,remount /system
+    ln -s /data/data/com.termux/files/usr/bin/bash  /system/bin
+    unmount /system || mount -o ro,remount /system
 fi
 echo
 
@@ -56,7 +62,7 @@ if [ `busybox whoami` = "root" ];then
 else
     echo "请执行 'su -c ./start.sh' 临时赋予脚本管理员权限 "
     echo
-    echo "权限仅用于测试系统环境中是否存在bash命令解释器"
+    echo "权限用于测试系统环境中是否存在bash命令解释器"
     echo 
 
     exit
