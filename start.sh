@@ -20,8 +20,17 @@ read -p "如已安装模块 请按回车键尝试"
 mkdir /sdcard/.android #创建存放adb密钥的目录
 cd /sdcard/.android #进入存放adb密钥的目录
 adb keygen adbkey #生成adb密钥
+#cat /sdcard/.android/adbkey.pub > /data/misc/adb/adb_keys
+if [ -d /data/misc/adb/adb_keys ]; then
+#判断公钥是否在本机中存在
+adb shell sh ./open.sh
+else
+#启用网络adb
+setprop service.adb.tcp.port 5555
+stop adbd && start adbd #重启adb守护进程
 adb kill-server #结束adb进程
 cd $HOME/O* #返回工作目录
+fi
 adb shell sh ./open.sh
 ;;
 3)
