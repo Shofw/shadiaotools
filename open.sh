@@ -173,22 +173,22 @@ echo "all.全部停用"
 echo "按回车键返回主菜单."
 echo
 
-read -p "你想停用什么？(键入数字)：" output
+read -p "你想停用什么？：" output
 case $output in
 
-1) pm disable-user $package1 package_disable
+1) pm disable-user $package1 && package_disable
 	;;
-2) pm disable-user $package2 package_disable
+2) pm disable-user $package2 && package_disable
 	;;
-3) pm disable-user $package3 package_disable
+3) pm disable-user $package3 && package_disable
 	;;
-4) pm disable-user $package4 package_disable
+4) pm disable-user $package4 && package_disable
 	;;
-5) pm disable-user $package5 package_disable
+5) pm disable-user $package5 && package_disable
 	;;
-6) pm disable-user $package6 package_disable
+6) pm disable-user $package6 && package_disable
 	;;
-7) pm disable-user $package7 package_disable
+7) pm disable-user $package7 &&  package_disable
 	;;
 all) 
 pm disable-user $package1
@@ -199,7 +199,7 @@ pm disable-user $package5
 pm disable-user $package6
 pm disable-user $package7
 
-package_disable
+sleep 1 && package_disable
         ;;
 *) menu
 esac
