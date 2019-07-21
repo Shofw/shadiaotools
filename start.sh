@@ -219,14 +219,15 @@ if  command -v bash > /dev/null; then
 	echo "bash command has found"
 	echo "即将进入主界面..." && sleep 3 
 	menu #主菜单
-else                                                                  echo "Error:bash command has not found"
+else
+	echo "Error:bash command has not found"
 	echo "警告：bash命令解释器不存在"
 	echo "提示：脚本将会把Tremux自带的bash软链接到/system/bin"
 	echo "如果继续，请等待5秒. 否则请结束该脚本 [Ctrl +C] 默认>继续"
 	sleep 5
-	mount -o rw,remount /system #挂载系统读写
-	ln -s /data/data/com.termux/files/usr/bin/bash  /system/bin #>创建链接
-	mount -o ro,remount /system 2>1 >/dev/null#>挂载system只读
+	mount -o rw,remount /system #挂载system可读写
+	ln -s /data/data/com.termux/files/usr/bin/bash  /bin #创建链接
+	mount -o ro,remount /system 2>1 >/dev/null #挂载system只读
     echo
     echo "bash已链接到/bin/bash"
     echo
