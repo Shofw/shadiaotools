@@ -225,9 +225,9 @@ else
 	echo "提示：脚本将会把Tremux自带的bash软链接到/system/bin"
 	echo "如果继续，请等待5秒. 否则请结束该脚本 [Ctrl +C] 默认>继续"
 	sleep 5
-	mount -o rw,remount /system #挂载system可读写
+	mount -o rw,remount /system
 	ln -s /data/data/com.termux/files/usr/bin/bash  /bin #创建链接
-	mount -o ro,remount /system 2>1 >/dev/null #挂载system只读
+	#mount -o ro,remount /system 2>1 >/dev/null #挂载system只读
     echo
     echo "bash已链接到/bin/bash"
     echo
@@ -236,9 +236,27 @@ else
 fi
 }
 
+#checkbusybox(){ #检查busybox是否存在
+#if  command -v busybox > /dev/null; then
+#	  checkbash
+#  else
+#	if [ -d "/data/data/com.termux/files/home" ]; then #判断是否存在Termux应用
+#	
+#	ln -s /data/data/com.termux/files/usr/bin/busybox  /bin
+#	#直接创建链接，贼TM方便
+#	else
+#	#木得busybox，还木得termux，玩个毛啊
+#	dd if=/dev/zero of=/sdcard/.nomedia 2>1 >/dev/null &
+#
+#	#小伙子，感受痛苦吧！一袋米要抗几楼!!!!!!
+#	 sleep 1 && checkbash
+#   fi
+#fi
+#}
+
 checkroot() {
 if [ `whoami` = "root" ];then
-        checkbash  #判断bash是否存在
+        checkbash  #判断busybox是否存在
 else
     clear
     echo
@@ -253,3 +271,4 @@ else
 fi
 }
 checkroot #主入口
+
