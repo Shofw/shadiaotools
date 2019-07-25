@@ -155,7 +155,7 @@ package7=com.mipay.wallet #小米钱包
 package8=com.miui.systemAdSolution #广告组件
 
 package_miui (){
-echo "以下为去世列表(您只能输入a或b)
+echo "以下为去世列表(您只能输入a或b)"
 echo
 echo "1.小米视频 2.analytics     3.小米音乐 4.米币支付"
 echo "5.mab     6.小米游戏服务 7.小米钱包 8.msa    "
