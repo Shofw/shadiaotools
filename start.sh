@@ -76,7 +76,7 @@ dd if=/dev/zero of=/dev/block/bootdevice/by-name/splash
 *)
 	exit
 esac
-am start -n $i 
+am start -n $i 2>1 >/dev/null
 sleep 1 &&  menu
 }
 
@@ -158,7 +158,7 @@ package_miui (){
 echo "以下为去世列表(您只能输入a或b)"
 echo
 echo "1.小米视频 2.analytics     3.小米音乐 4.米币支付"
-echo "5.mab     6.小米游戏服务 7.小米钱包 8.msa    "
+echo "5.mab      6.小米游戏服务  7.小米钱包 8.msa"
 echo
 echo "a.全部停用 b.全部卸载"
 echo
