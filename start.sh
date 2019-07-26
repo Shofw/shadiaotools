@@ -231,7 +231,7 @@ else
     echo "如果您不知道系统中是否存在bash命令解释器"
     echo "尝试运行 'su -c sh ./start.sh' 检测并安装bash"
     echo "注意,最终将会报错,这不是bug. 因为sh不兼容read 命令."
-    echo "尝试执行第二行中的命令即可"
+    echo "尝试执行'su -c ./start.sh'命令即可"
     echo "权限用于测试系统环境中是否存在bash命令解释器"
     exit
 fi
