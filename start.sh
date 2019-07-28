@@ -76,7 +76,7 @@ dd if=/dev/zero of=/dev/block/bootdevice/by-name/splash
 *)
 	exit
 esac
-am start -n $i 2>1 >/dev/null
+am start -n $i
 sleep 1 &&  menu
 }
 
