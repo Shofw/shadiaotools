@@ -1,4 +1,4 @@
-#用法：
+#用法：bash start.sh
 
 ```
 bash start.sh
